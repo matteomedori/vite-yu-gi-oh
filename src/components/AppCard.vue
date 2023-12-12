@@ -25,6 +25,8 @@ export default {
   h3 {
     color: white;
     margin: 25px 0;
+    text-transform: uppercase;
+    font-size: 16px;
   }
 
   .archetype {

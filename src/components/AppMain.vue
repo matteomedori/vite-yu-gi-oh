@@ -1,6 +1,7 @@
 <script>
 import AppSelect from "./AppSelect.vue";
 import AppCards from "./AppCards.vue";
+import AppFounded from "./AppFounded.vue";
 import axios from "axios";
 import { store } from "../store";
 
@@ -9,6 +10,7 @@ export default {
   components: {
     AppSelect,
     AppCards,
+    AppFounded,
   },
   data() {
     return {
@@ -28,7 +30,10 @@ export default {
   <main>
     <div class="container">
       <AppSelect />
-      <AppCards />
+      <div class="container-cards">
+        <AppFounded />
+        <AppCards />
+      </div>
     </div>
   </main>
 </template>
@@ -38,5 +43,10 @@ export default {
 
 main {
   background-color: $main-bg;
+
+  .container-cards {
+    background-color: white;
+    padding: 45px 45px 10px 45px;
+  }
 }
 </style>
