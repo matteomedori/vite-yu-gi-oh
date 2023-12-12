@@ -8,7 +8,7 @@ export default {
   <img src="/img/logo.png" alt="logo" />
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 img {
   max-width: 50px;
 }

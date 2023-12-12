@@ -1,10 +1,12 @@
 <script>
 import AppSelect from "./AppSelect.vue";
+import AppCards from "./AppCards.vue";
 
 export default {
   name: "AppMain",
   components: {
     AppSelect,
+    AppCards,
   },
 };
 </script>
@@ -13,10 +15,7 @@ export default {
   <main>
     <div class="container">
       <AppSelect />
-      <div class="cards">
-        <div class="founded">founded</div>
-        <div class="card">card</div>
-      </div>
+      <AppCards />
     </div>
   </main>
 </template>
@@ -26,9 +25,5 @@ export default {
 
 main {
   background-color: $main-bg;
-
-  .cards {
-    background-color: white;
-  }
 }
 </style>
