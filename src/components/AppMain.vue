@@ -1,16 +1,34 @@
 <script>
+import AppSelect from "./AppSelect.vue";
+
 export default {
   name: "AppMain",
+  components: {
+    AppSelect,
+  },
 };
 </script>
 
 <template>
   <main>
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem quaerat
-      eius odio! Dolor, voluptate deserunt reiciendis natus, illum non quidem
-      debitis corrupti nobis, amet dicta soluta nulla ex aut quasi.
+    <div class="container">
+      <AppSelect />
+      <div class="cards">
+        <div class="founded">founded</div>
+        <div class="card">card</div>
+      </div>
     </div>
   </main>
 </template>
-<style></style>
+
+<style lang="scss">
+@use "../assets/scss/partials/variables" as *;
+
+main {
+  background-color: $main-bg;
+
+  .cards {
+    background-color: white;
+  }
+}
+</style>
