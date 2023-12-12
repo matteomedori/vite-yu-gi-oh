@@ -2,6 +2,7 @@
 import AppSelect from "./AppSelect.vue";
 import AppCards from "./AppCards.vue";
 import AppFounded from "./AppFounded.vue";
+import AppLoader from "./AppLoader.vue";
 import axios from "axios";
 import { store } from "../store";
 
@@ -11,11 +12,13 @@ export default {
     AppSelect,
     AppCards,
     AppFounded,
+    AppLoader,
   },
   data() {
     return {
       store,
       apiURL: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0",
+      prova: 2,
     };
   },
   created() {
@@ -31,7 +34,8 @@ export default {
     <div class="container">
       <AppSelect />
       <div class="container-cards">
-        <AppFounded />
+        <AppLoader v-if="store.cards.length === 0" />
+        <AppFounded v-else />
         <AppCards />
       </div>
     </div>
