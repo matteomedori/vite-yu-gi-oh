@@ -17,13 +17,12 @@ export default {
   data() {
     return {
       store,
-      apiURL: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0",
       prova: 2,
     };
   },
   created() {
-    axios.get(this.apiURL).then((response) => {
-      store.cards = response.data.data;
+    axios.get(this.store.cardsApiUrl).then((response) => {
+      this.store.cards = response.data.data;
     });
   },
 };

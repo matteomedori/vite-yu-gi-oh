@@ -1,14 +1,38 @@
 <script>
+import { store } from "../store";
+import axios from "axios";
+
 export default {
   name: "AppSelect",
+  data() {
+    return {
+      store,
+    };
+  },
+  created() {
+    axios.get(this.store.archetypeApiUrl).then((response) => {
+      this.store.archetypes = response.data;
+    });
+  },
 };
 </script>
 
 <template>
   <div class="select-comp">
-    <label for="type" hidden>Choose a monster type:</label>
-    <select name="type" id="type">
-      <option value="Alien">Alien</option>
+    <label for="archetype" hidden>Choose a monster archetype:</label>
+    <select
+      name="archetype"
+      id="archetype"
+      v-model="store.selectValue"
+      @change="evento"
+    >
+      <option selected value="">Select Archetype</option>
+      <option
+        :value="archetype.archetype_name"
+        v-for="archetype in store.archetypes"
+      >
+        {{ archetype.archetype_name }}
+      </option>
     </select>
   </div>
 </template>
