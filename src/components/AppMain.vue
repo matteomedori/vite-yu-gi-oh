@@ -20,10 +20,36 @@ export default {
       prova: 2,
     };
   },
+  methods: {
+    //selectCards, se non ho selezionato alcun archetipo, fa una chiamata generale alla API
+    // con i parametri num e offeset, altrimenti fa una chiamata con archetype come parametro
+    selectCards() {
+      if (this.store.selectValue === "") {
+        axios
+          .get(this.store.apiYuGiOh.defaultAPI, {
+            params: {
+              num: 15,
+              offset: 0,
+            },
+          })
+          .then((response) => {
+            this.store.cards = response.data.data;
+          });
+      } else {
+        axios
+          .get(this.store.apiYuGiOh.defaultAPI, {
+            params: {
+              archetype: this.store.selectValue,
+            },
+          })
+          .then((response) => {
+            this.store.cards = response.data.data;
+          });
+      }
+    },
+  },
   created() {
-    axios.get(this.store.cardsApiUrl).then((response) => {
-      this.store.cards = response.data.data;
-    });
+    this.selectCards();
   },
 };
 </script>
@@ -31,7 +57,7 @@ export default {
 <template>
   <main>
     <div class="container">
-      <AppSelect />
+      <AppSelect @selectArchetype="selectCards" />
       <div class="container-cards">
         <AppLoader v-if="store.cards.length === 0" />
         <AppFounded v-else />

@@ -9,9 +9,7 @@ export default {
   <div class="card">
     <img :src="img" alt="" />
     <h3>{{ title }}</h3>
-    <div class="archetype">
-      {{ archetype === undefined ? "Alien" : archetype }}
-    </div>
+    <div class="archetype">{{ archetype }}</div>
   </div>
 </template>
 

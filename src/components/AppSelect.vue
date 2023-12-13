@@ -10,7 +10,7 @@ export default {
     };
   },
   created() {
-    axios.get(this.store.archetypeApiUrl).then((response) => {
+    axios.get(this.store.apiYuGiOh.archetypeAPI).then((response) => {
       this.store.archetypes = response.data;
     });
   },
@@ -24,7 +24,7 @@ export default {
       name="archetype"
       id="archetype"
       v-model="store.selectValue"
-      @change="evento"
+      @change="$emit('selectArchetype')"
     >
       <option selected value="">Select Archetype</option>
       <option
